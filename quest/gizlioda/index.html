@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kutular Çok Güzel</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #2f3640;
+            color: #f5f6fa;
+            text-align: center;
+            padding: 3rem;
+        }
+        h1 {
+            color: #ff4757;
+        }
+        .secret-box {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: #2f3542;
+            margin: 0.5rem;
+            border: 2px solid #00b894;
+            cursor: pointer;
+            color: #f5f6fa;
+            font-weight: bold;
+            text-align: center;
+            line-height: 100px;
+        }
+        .feedback {
+            margin-top: 1rem;
+            color: #f1c40f;
+            font-size: 1.1rem;
+        }
+        footer {
+            margin-top: 4rem;
+            font-size: 0.8rem;
+            color: #636e72;
+        }
+    </style>
+    <script>
+        let revealedParts = 0;
+        function revealWord(boxId, word) {
+            const box = document.getElementById(boxId);
+            box.innerText = word;
+            box.style.backgroundColor = "#00b894";
+            box.style.color = "#2f3640";
+            box.style.boxShadow = "0 0 15px rgba(0, 184, 148, 0.7)";
+            revealedParts++;
+
+            if (revealedParts === 3) {
+                document.getElementById("feedback").innerText = 
+                    "Ne kadar anlamsız değil mi?";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>CTF Challenge: Kutular Çok Güzel</h1>
+
+    <div id="box1" class="secret-box" onclick="revealWord('box1', 'Nak')">Kutu 1</div>
+    <div id="box2" class="secret-box" onclick="revealWord('box2', 'Kay')">Kutu 2</div>
+    <div id="box3" class="secret-box" onclick="revealWord('box3', 'Kod')">Kutu 3</div>
+
+    <div class="feedback" id="feedback">
+        <p>Bir kutu açma yarışması vardı. Neydi onun adı?</p>
+    </div>
+
+  
+    <!-- FLAG: PenteGuard{flag_saklanmayı_sever} -->
+
+    <footer>
+        CTF Challenge | PenteGuard
+    </footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bu buton bozuk!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2f3640;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 2rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fbc531;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            font-size: 1.2rem;
+            color: #ffffff;
+            background-color: #e84118;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c23616;
+            transform: scale(1.1);
+        }
+
+        .counter {
+            font-size: 1.2rem;
+            color: #00a8ff;
+            margin-top: 2rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            color: #dcdde1;
+            font-size: 0.9rem;
+        }
+    </style>
+    <script>
+        let count = 0;
+        const targetClicks = Math.floor(Math.random() * 11) + 20;
+        function tikla() {
+            count++;
+            const counterElement = document.getElementById('counter');
+            const button = document.querySelector("button");
+
+            const randomTop = Math.random() * 80 + "%";
+            const randomLeft = Math.random() * 80 + "%";
+            button.style.top = randomTop;
+            button.style.left = randomLeft;
+
+
+            if (count < targetClicks) {
+                const messages = [
+                    `Tıklamaya devam et!`,
+                    "Hala bir şey yok, sabırlı ol!",
+                    "Belki bir kez daha denesen?",
+                    "Daha hızlı tıklamalısın!",
+                    `Sayı ilerliyor... ama yeterli mi?`
+                ];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                counterElement.textContent = randomMessage;
+            } else if (count === targetClicks) {
+                alert("Tebrikler! Flag: PenteGuard{inatci_flag}");
+                counterElement.textContent = "Tebrikler! Flag ortaya çıktı!";
+                button.disabled = true;
+                button.style.backgroundColor = "#44bd32";
+                button.style.cursor = "not-allowed";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Flag için tıklamalara dikkat et!</h1>
+    <button onclick="tikla()">Tıkla</button>
+    <p id="counter" class="counter"></p>
+    <footer>CTF Challenge | PenteGuard </footer>
+</body>
+</html>
