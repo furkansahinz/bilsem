@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cevap Kontrol Web Sitesi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+        }
+        .question {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Cevapları Çözmemde Yardımcı Olabilir misin?</h1>
+    <div class="container">
+        <div class="question">Soru 1: Her gün bir yerlere giderim, ama beni kimse göremez. Güneşin peşinden koşarım, ışığımı yayarım, ancak gece olunca kaybolurum. Herkes beni tanır ama kimse bana sahip olamaz. Ben kimim?</div>
+        <input type="text" id="text1">
+        
+        <div class="question">Soru 2: Bir evin içinde varım, kapım yok ama binlerce odada saklıyım. Çeşit çeşit renklerim, şekillerim var ama hiç sesim yok. İçime daldıkça kaybolabilirsin ama bir şey bulursan yüzün gülümser. Ben neyim?</div>
+        <input type="text" id="text2">
+        
+        <div class="question">Soru 3: Gün geçmez ki bende bir şey değişmesin. Her sabah yeniden doğarım ama hiç büyümem. Herkes beni arar, ama ne olduğunu bilmez. İçimde dertler ve sevinçler saklıdır, ben bir sesim ama herkes duyar. Ben neyim?</div>
+        <input type="text" id="text3">
+        
+        <div class="question">Soru 4: Kendi içimde birçok sır taşırım, bazen beni açmak için anahtar gerekir ama ben sadece zamanla çözülürüm. İçimde birbirinden farklı birçok şey barındırırım ama dışarıdan kimse göremez. Beni her zaman yanınızda taşırsınız ama hiç taşımadığınızı düşünürsünüz. Ben neyim?</div>
+        <input type="text" id="text4">
+        
+        <button onclick="kontrolEt()">Kontrol Et</button>
+    </div>
+
+    <script>
+        function kontrolEt() {
+            // Doğru cevaplar
+            const cevaplar = ["gölge", "kutu", "güneş", "zaman"];
+
+            // Kullanıcıdan alınan cevaplar
+            const kullaniciCevaplari = [
+                document.getElementById("text1").value.trim(),
+                document.getElementById("text2").value.trim(),
+                document.getElementById("text3").value.trim(),
+                document.getElementById("text4").value.trim()
+            ];
+
+            // Doğru cevapları say
+            let dogruSayisi = 0;
+            for (let i = 0; i < cevaplar.length; i++) {
+                if (kullaniciCevaplari[i].toLowerCase() === cevaplar[i].toLowerCase()) {
+                    dogruSayisi++;
+                }
+            }
+
+            // Sonucu kontrol et
+            if (dogruSayisi === 4) {
+                alert("PenteGuard{S3N_N3S1N_B3}") ;
+            } else {
+                alert(`${dogruSayisi} doğru cevap buldunuz. Tüm cevapları doğru bulmalısınız.`);
+            }
+        }
+    </script>
+</body>
+</html>
